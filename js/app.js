@@ -1,7 +1,7 @@
-const endpoint_all = 'http://localhost:8008/'
-const endpoint_detail_short = 'http://localhost:8008/short_view.php?view='
-const endpoint_detail = 'http://localhost:8008/view.php?view='
-const endpoint_search = 'http://localhost:8008/search.php?q='
+const endpoint_all = 'http://playstore.axialapp.site/Backend/'
+const endpoint_detail_short = 'http://playstore.axialapp.site/Backend/short_view.php?view='
+const endpoint_detail = 'http://playstore.axialapp.site/Backend/view.php?view='
+const endpoint_search = 'http://playstore.axialapp.site/Backend/search.php?q='
 
 const re_loading = document.querySelector('#recommend-loading')
 const re_box = document.querySelector('#recommend-box-scroll')
@@ -117,7 +117,7 @@ function search_input(e) {
 		search_page.classList.remove('hidden')
 		// if(event.keyCode == 13) {
 			search_box.innerHTML = `<div class="w-full mt-8" id="news-loading">
-					<img src="/img/loading.gif" alt="loading" class="w-8 mx-auto">
+					<img src="img/loading.gif" alt="loading" class="w-8 mx-auto">
 				</div>`
 			search(e.value)
 		// }
