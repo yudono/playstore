@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Playstore</title>
+
+	<!-- import assets from url  -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</head>
+<style>*:focus{outline:none;}.roboto{font-family: 'Roboto', sans-serif;}</style>
+<body>
+
+	<div class="hidden sm:flex items-center justify-center h-screen">
+		<div class="text-gray-500 roboto font-bold text-xl">Open in mobile</div>
+	</div>
+	<div class="block sm:hidden">
+		<header class="border-b">
+			<div class="px-8 pt-4 pb-6 flex flex-row items-center">
+				<div class="relative flex-grow">
+					<span class="absolute top-0 left-0 z-10 text-xl py-3 px-4 text-gray-800">
+						<ion-icon name="menu-outline"></ion-icon>
+					</span>
+
+					<span class="absolute top-0 right-0 z-10 text-xl py-3 px-4 text-gray-800">
+						<ion-icon name="mic-outline"></ion-icon>
+					</span>
+
+					<input type="text" class="border w-full py-3 px-12 rounded-lg z-0 roboto" placeholder="Search for app& game" onkeyup="search_input(this)">
+				</div>
+				<img src="/img/avatar.jpg" alt="avatar" class="w-10 h-10 rounded-full flex-shrink-0 ml-4 object-cover">
+			</div>
+		</header>
+
+
+		<section id="home-page">
+			<section class="whitespace-nowrap overflow-auto">
+				<img src="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/pubg_game_660_141020121948.jpg" alt="banner" class="w-full inline-block">
+				<img src="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/pubg_game_660_141020121948.jpg" alt="banner" class="w-full inline-block">
+				<img src="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/pubg_game_660_141020121948.jpg" alt="banner" class="w-full inline-block">
+			</section>
+
+			<div class="px-8 border-b roboto overflow-auto whitespace-nowrap">
+				<a href="#" class="inline-block py-3 px-2 text-md font-bold text-green-500 border-b-4 border-green-500">For You</a>
+				<a href="#" class="inline-block py-3 px-2 text-md font-bold text-gray-800 ml-3">Top Charts</a>
+				<a href="#" class="inline-block py-3 px-2 text-md font-bold text-gray-800 ml-3">Categories</a>
+				<a href="#" class="inline-block py-3 px-2 text-md font-bold text-gray-800 ml-3">New</a>
+				<a href="#" class="inline-block py-3 px-2 text-md font-bold text-gray-800 ml-3">Premium</a>
+			</div>
+
+			<main class="p-8">
+
+				<!-- Recommended for you -->
+				<div class="flex flex-row item-center">
+					<h1 class="roboto font-bold text-gray-800 text-xl mb-4 flex-grow">Recomended for you</h1>
+					<ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+				</div>
+
+				<div class="w-full" id="recommend-loading">
+					<img src="/img/loading.gif" alt="loading" class="w-8 mx-auto">
+				</div>
+
+				<div class="whitespace-nowrap overflow-auto hidden flex items-start" id="recommend-box-scroll"></div>
+
+				<!-- News and update -->
+				<div class="flex flex-row item-center mt-8">
+					<h1 class="roboto font-bold text-gray-800 text-xl mb-4 flex-grow">News & updated apps</h1>
+					<ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+				</div>
+
+				<div class="w-full" id="news-loading">
+					<img src="/img/loading.gif" alt="loading" class="w-8 mx-auto">
+				</div>
+
+				<div class="whitespace-nowrap overflow-auto hidden flex items-start" id="news-box-scroll"></div>
+
+				<br><br><br>
+
+			</main>
+		</section>
+
+		<section id="search-page">
+			<main>
+
+				<div id="list-search"></div>
+
+			</main>
+		</section>
+
+		<section class="fixed top-0 left-0 w-full h-screen z-40 bg-white hidden" id="view-app">
+			<div class="w-full h-screen overflow-auto relative">
+				<main class="p-8">
+					<div class="flex flex-row items-center">
+						<button onclick="closeview()"><ion-icon name="chevron-back-outline"></ion-icon></button>
+						<div class="flex-grow"></div>
+						<button class="mr-2"><ion-icon name="search-outline"></ion-icon></button>
+						<button><ion-icon name="ellipsis-vertical"></ion-icon></button>
+					</div>
+
+					<div class="flex flex-row mt-4 items-center">
+						<img src="/img/lazy.png" alt="app" class="w-12 h-12 rounded-full" id="icon-app">
+						<div class="flex-grow ml-6">
+							<div class="text-lg font-bold roboto" id="title-app"></div>
+							<div class="roboto text-sm text-green-500" id='publisher-app'></div>
+							<!-- <div class="roboto text-xs text-gray-400">Offers in-app purchases</div> -->
+						</div>
+					</div>
+
+					<div class="overflow-auto whitespace-nowrap mt-8" id="thumbnail-app">
+					</div>
+
+					<div class="mt-8 flex flex-row">
+						<div class="flex-grow text-center">
+							<div class="font-bold">4.5*</div>
+							<div class="text-xs text-gray-400">500k views</div>
+						</div>
+						<div class="flex-grow text-center border-l border-r">
+							<div class="font-bold">10M</div>
+							<div class="text-xs text-gray-400">Downloads</div>
+						</div>
+						<div class="flex-grow text-center">
+							<div class="transform -rotate-45 font-bold w-4 mx-auto">E</div>
+							<div class="text-xs text-gray-400">Everyone</div>
+						</div>
+					</div>
+
+					<div class="flex flex-row justify-between mt-8">
+						<div>
+							<div class="roboto font-bold">About this apps</div>
+							<div class="text-xs text-gray-400 mt-2">Explore infinite worlds and build everything </div>
+						</div>
+						<ion-icon name="arrow-forward-outline"></ion-icon>
+					</div>
+
+					<div class="overflow-auto whitespace-nowrap mt-4">
+						<div class="py-2 px-6 rounded-full bg-transparent border-2 border-green-500 text-black font-bold roboto mr-4 mb-2 inline-block">Action</div>
+					</div>
+
+					<div class="flex flex-row justify-between mt-8">
+						<div>
+							<div class="roboto font-bold">Rating & reveiws</div>
+						</div>
+						<ion-icon name="arrow-forward-outline"></ion-icon>
+					</div>
+					<br><br><br><br>
+				</main>
+
+				<div class="fixed bottom-0 left-0 w-full px-8 py-4 bg-white border-t shadow-sm">
+					<a download id="download-app" href="#" class="w-full table bg-green-500 text-white text-center rounded-full p-2">
+						Install
+						<ion-icon name="download-outline"></ion-icon>
+					</a>
+				</div>
+
+				<div class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-75 z-60 flex items-center justify-center hidden" onclick="closepopup()" id="popup">
+					<div class="aspect-w-16 aspect-h-9">
+						<iframe src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<nav class="fixed bottom-0 left-0 w-full bg-white border-t px-12 py-3 flex flex-row justify-between items-center">
+			<button class="text-green-600">
+				<ion-icon name="grid-outline"></ion-icon>
+				<div class="text-xs">Apps</div>
+			</button>
+			<button>
+				<ion-icon name="game-controller-outline"></ion-icon>
+				<div class="text-xs">Games</div>
+			</button>
+			<button>
+				<ion-icon name="film-outline"></ion-icon>
+				<div class="text-xs">Movies & TV</div>
+			</button>
+			<button>
+				<ion-icon name="book-outline"></ion-icon>
+				<div class="text-xs">Books</div>
+			</button>
+		</nav>
+	</div>
+
+	<script src="/js/app.js"></script>
+</body>
+</html>
