@@ -1,7 +1,7 @@
-const endpoint_all = 'http://playstore.axialapp.site/Backend/'
-const endpoint_detail_short = 'http://playstore.axialapp.site/Backend/short_view.php?view='
-const endpoint_detail = 'http://playstore.axialapp.site/Backend/view.php?view='
-const endpoint_search = 'http://playstore.axialapp.site/Backend/search.php?q='
+const endpoint_all = 'https://playstore.axialapp.site/Backend/'
+const endpoint_detail_short = 'https://playstore.axialapp.site/Backend/short_view.php?view='
+const endpoint_detail = 'https://playstore.axialapp.site/Backend/view.php?view='
+const endpoint_search = 'https://playstore.axialapp.site/Backend/search.php?q='
 
 const re_loading = document.querySelector('#recommend-loading')
 const re_box = document.querySelector('#recommend-box-scroll')
